@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using ElephantSDK;
 using Fiber.Managers;
 using Fiber.Utilities;
 using Sirenix.OdinInspector;
@@ -54,11 +53,11 @@ namespace _Main.Scripts.LevelConfig
 			}
 			else
 			{
-				string jsonText = RemoteConfig.GetInstance().Get("level_data");
-				if (!string.IsNullOrEmpty(jsonText))
-					configData = JsonUtility.FromJson<LevelConfigRoot>(jsonText);
-				else
-					Debug.LogWarning("JSON not found!!!");
+				// string jsonText = RemoteConfig.GetInstance().Get("level_data");
+				// if (!string.IsNullOrEmpty(jsonText))
+				// 	configData = JsonUtility.FromJson<LevelConfigRoot>(jsonText);
+				// else
+				// 	Debug.LogWarning("JSON not found!!!");
 			}
 		}
 

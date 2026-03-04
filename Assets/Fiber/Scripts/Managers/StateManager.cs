@@ -1,7 +1,6 @@
 using System.Collections;
 using _Main.Scripts.Analytics;
 using _Main.Scripts.Datas;
-using ElephantSDK;
 using Fiber.Utilities;
 using Fiber.LevelSystem;
 using UnityEngine;

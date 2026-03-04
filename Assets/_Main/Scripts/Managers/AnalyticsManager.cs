@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using ElephantSDK;
 using Fiber.Managers;
 using Fiber.Utilities;
 using UnityEngine;
@@ -24,14 +23,12 @@ namespace _Main.Scripts.Analytics
             // var typeName = AnalyticsReferences.LevelKeyTable[type];
             var parameters = new Dictionary<string, object> { { AnalyticsReferences.LevelIndexKey, levelIndex } };
             FiberAmplitude.Instance.SendCustomEvent(EAnalyticsEvent.Level_Start, parameters);
-            Elephant.LevelStarted(levelIndex, LevelManager.Instance.CurrentLevelIndex.ToString());
         }
 
         public void LevelWin(double completionTime, string param_time)
         {
             _sessionPlayedLevelCount++;
-            var param = Params.New().Set(param_time, completionTime);
-            Elephant.LevelCompleted(LevelManager.Instance.LevelNo, LevelManager.Instance.CurrentLevelIndex.ToString());
+           
 
             // var typeName = AnalyticsReferences.LevelKeyTable[type];
             var parameters = new Dictionary<string, object>
@@ -46,10 +43,10 @@ namespace _Main.Scripts.Analytics
         {
             _sessionPlayedLevelCount++;
 
-            var param = Params.New().Set(AnalyticsReferences.LevelEndTimeKey, completionTime)
-                .Set(AnalyticsReferences.LevelEndMoveCountKey, moveCount);
-
-            Elephant.LevelCompleted(LevelManager.Instance.LevelNo, LevelManager.Instance.CurrentLevelIndex.ToString(), param);
+            // var param = Params.New().Set(AnalyticsReferences.LevelEndTimeKey, completionTime)
+            //     .Set(AnalyticsReferences.LevelEndMoveCountKey, moveCount);
+            //
+            // Elephant.LevelCompleted(LevelManager.Instance.LevelNo, LevelManager.Instance.CurrentLevelIndex.ToString(), param);
 
             // var typeName = AnalyticsReferences.LevelKeyTable[type];
             var parameters = new Dictionary<string, object>
@@ -63,7 +60,7 @@ namespace _Main.Scripts.Analytics
 
         public void LevelLose()
         {
-            Elephant.LevelFailed(LevelManager.Instance.LevelNo, LevelManager.Instance.CurrentLevelIndex.ToString());
+            // Elephant.LevelFailed(LevelManager.Instance.LevelNo, LevelManager.Instance.CurrentLevelIndex.ToString());
             var parameters = new Dictionary<string, object>
             {
                 { AnalyticsReferences.LevelIndexKey, LevelManager.Instance.LevelNo }
