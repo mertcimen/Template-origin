@@ -1,5 +1,5 @@
+using Base_Systems.Scripts.Managers;
 using DG.Tweening;
-using Fiber.Managers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;

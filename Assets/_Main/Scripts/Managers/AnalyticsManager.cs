@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
-using Fiber.Managers;
+using Base_Systems.Scripts.Managers;
+using Base_Systems.Scripts.Utilities.Singletons;
 using Fiber.Utilities;
 using UnityEngine;
 
@@ -15,14 +16,14 @@ namespace _Main.Scripts.Analytics
             {
                 { "type", typeName }, { "used", used }, { "total", total }
             };
-            FiberAmplitude.Instance.SendCustomEvent(EAnalyticsEvent.Currency_Change, parameters);
+            // FiberAmplitude.Instance.SendCustomEvent(EAnalyticsEvent.Currency_Change, parameters);
         }
 
         public void StartLevel(int levelIndex)
         {
             // var typeName = AnalyticsReferences.LevelKeyTable[type];
             var parameters = new Dictionary<string, object> { { AnalyticsReferences.LevelIndexKey, levelIndex } };
-            FiberAmplitude.Instance.SendCustomEvent(EAnalyticsEvent.Level_Start, parameters);
+            // FiberAmplitude.Instance.SendCustomEvent(EAnalyticsEvent.Level_Start, parameters);
         }
 
         public void LevelWin(double completionTime, string param_time)
@@ -36,7 +37,7 @@ namespace _Main.Scripts.Analytics
                 { AnalyticsReferences.LevelEndTimeKey, completionTime },
                 { AnalyticsReferences.LevelIndexKey, LevelManager.Instance.LevelNo }
             };
-            FiberAmplitude.Instance.SendCustomEvent(EAnalyticsEvent.Level_Win, parameters);
+            // FiberAmplitude.Instance.SendCustomEvent(EAnalyticsEvent.Level_Win, parameters);
         }
 
         public void EndLevelWithMoveCount(double completionTime, int moveCount)
@@ -55,7 +56,7 @@ namespace _Main.Scripts.Analytics
                 { AnalyticsReferences.LevelEndMoveCountKey, moveCount },
                 { AnalyticsReferences.LevelIndexKey, LevelManager.Instance.LevelNo }
             };
-            FiberAmplitude.Instance.SendCustomEvent(EAnalyticsEvent.Level_Win, parameters);
+            // FiberAmplitude.Instance.SendCustomEvent(EAnalyticsEvent.Level_Win, parameters);
         }
 
         public void LevelLose()
@@ -65,7 +66,7 @@ namespace _Main.Scripts.Analytics
             {
                 { AnalyticsReferences.LevelIndexKey, LevelManager.Instance.LevelNo }
             };
-            FiberAmplitude.Instance.SendCustomEvent(EAnalyticsEvent.Level_Fail, parameters);
+            // FiberAmplitude.Instance.SendCustomEvent(EAnalyticsEvent.Level_Fail, parameters);
         }
 
         // public void StartTutorial(ELevelTutorial type)
@@ -146,7 +147,7 @@ namespace _Main.Scripts.Analytics
             _sessionIndex++;
             _sessionTime = DateTime.Now;
             var parameters = new Dictionary<string, object> { { "index", _sessionIndex }, };
-            FiberAmplitude.Instance.SendCustomEvent(EAnalyticsEvent.Game_Start, parameters);
+            // FiberAmplitude.Instance.SendCustomEvent(EAnalyticsEvent.Game_Start, parameters);
         }
 
         public void EndSession(AnalyticsReferences.EGameEndState endState)
@@ -163,7 +164,7 @@ namespace _Main.Scripts.Analytics
                 { AnalyticsReferences.SessionTimeKey, _sessionTotalTime },
                 { AnalyticsReferences.SessionLevelCountKey, _sessionPlayedLevelCount },
             };
-            FiberAmplitude.Instance.SendCustomEvent(EAnalyticsEvent.Game_End, parameters);
+            // FiberAmplitude.Instance.SendCustomEvent(EAnalyticsEvent.Game_End, parameters);
         }
     }
 }
